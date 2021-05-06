@@ -43,7 +43,7 @@ export const Login: React.FC<object> = () => {
     }
 
     return <Container className="flex flex-col justify-center items-center">
-        <form onSubmit={handleSubmit(handleOnLogin)}>
+        <form className="w-full" onSubmit={handleSubmit(handleOnLogin)}>
             <Title type="super" className="mb-10">
                 EventLab
             </Title>

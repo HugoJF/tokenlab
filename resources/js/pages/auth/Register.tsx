@@ -39,7 +39,7 @@ export const Register: React.FC<object> = () => {
     }
 
     return <Container className="flex flex-col justify-center items-center">
-        <form onSubmit={handleSubmit(registerUser)}>
+        <form className="w-full" onSubmit={handleSubmit(registerUser)}>
             <Title className="mb-10">
                 Criando uma nova conta
             </Title>
