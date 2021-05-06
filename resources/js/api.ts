@@ -1,3 +1,4 @@
 import {events} from "./api/events";
+import {auth} from "./api/auth";
 
-export const api = {events};
+export const api = {auth, events};

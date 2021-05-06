@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/me', function (Request $request) {
+    if (auth()->check()) {
+        return auth()->user();
+    } else {
+        return response()->noContent();
+    }
 });
 
 Route::middleware(['auth'])->prefix('events')->group(function () {

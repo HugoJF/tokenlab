@@ -15,6 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create([
+            'email'    => 'asd@asd.com',
+            'password' => bcrypt('123123123'),
+        ]);
+        
         User::factory()
             ->has(Event::factory()->count(5))
             ->count(10)

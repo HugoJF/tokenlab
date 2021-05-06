@@ -7,6 +7,7 @@ export class Bxios {
     private url: string = '';
     private headers: { [header: string]: string } = {};
     private data: any;
+    private outsideApi = false;
     private formData: FormData | undefined = undefined;
     private custom: AxiosRequestConfig = {};
 
@@ -64,6 +65,12 @@ export class Bxios {
         return this;
     }
 
+    setOutsideApi() {
+        this.outsideApi = true;
+
+        return this;
+    }
+
     multipartFormData() {
         this.headers['Content-Type'] = 'multipart/form-data';
 
@@ -94,9 +101,11 @@ export class Bxios {
             url = [url];
         }
 
-        url = ['api', ...url];
-        url = url.join('/');
+        if (!this.outsideApi) {
+            url = ['api', ...url];
+        }
 
+        url = url.join('/');
         if (!url.startsWith('/')) {
             url = '/' + url;
         }

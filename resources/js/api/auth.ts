@@ -1,7 +1,16 @@
 import {bxios} from "../bxios";
 
-export const events = {
-    index: () => bxios()
+export const auth = {
+    login: (data: LoginParameters) => bxios()
+        .setOutsideApi()
         .post('login')
-        .send<ResourceResponse<EventType[]>>(),
+        .body(data)
+        .send(),
+    logout: () => bxios()
+        .setOutsideApi()
+        .post('logout')
+        .send(),
+    me: () => bxios()
+        .get('me')
+        .send<UserType>(),
 };

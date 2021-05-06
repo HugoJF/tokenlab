@@ -38,6 +38,29 @@ type PaginatedResourceResponse<T> = ResourceResponse<T> & {
     }
 }
 
+
+type LoginParameters = {
+    email: string;
+    password: string;
+    remember: boolean;
+}
+
+
+type UserType = UserProperties & UserComputedProperties & Timestamps;
+
+type UserProperties = {
+    name: string;
+    email: string;
+}
+
+type UserComputedProperties = {
+    id: number;
+    email_verified_at: string;
+    two_factor_secret: string;
+    two_factor_recovery_codes: string;
+}
+
+
 type EventType = EventProperties & Timestamps;
 
 type EventProperties = {
