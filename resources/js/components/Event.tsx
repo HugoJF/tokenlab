@@ -27,7 +27,7 @@ export const Event: React.FC<Props> = ({event, to}) => {
 
             {/* Day of month */}
             <div className="text-4xl">
-                {format(startsAt, 'd')}
+                {format(startsAt, 'dd')}
             </div>
         </div>
 

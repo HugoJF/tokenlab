@@ -1,3 +1,5 @@
+type Id = string | number;
+
 type Timestamps = {
     updated_at: string;
     created_at: string;
@@ -61,11 +63,15 @@ type UserComputedProperties = {
 }
 
 
-type EventType = EventProperties & Timestamps;
+type EventType = EventProperties & EventComputedProperties & Timestamps;
 
 type EventProperties = {
     title: string;
     description: string;
     starts_at: string;
     ends_at: string;
+}
+
+type EventComputedProperties = {
+    id: number;
 }

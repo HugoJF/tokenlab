@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 
-type Types = 'super';
+type Types = 'super' | 'header' | 'subheader';
 
 type Props = {
     className?: string;
@@ -9,7 +9,9 @@ type Props = {
 }
 
 const classes: { [id in Types]: (params: Props) => string } = {
-    super: () => `text-center text-5xl text-gray-800 font-black leading-none tracking-tighter`
+    super: () => `text-center text-5xl text-gray-800 font-black leading-none tracking-tighter`,
+    header: () => `text-center text-3xl text-gray-800 font-medium leading-none tracking-tight`,
+    subheader: () => `text-center text-xl text-gray-600 leading-none`,
 };
 
 export const Title: React.FC<Props> = (props) => {
