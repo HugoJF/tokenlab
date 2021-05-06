@@ -26,7 +26,7 @@ class EventController extends Controller
         $user = auth()->user();
 
         return EventResource::collection(
-            $user->events()->with(['participants'])->get()
+            $user->events()->with(['user', 'participants'])->get()
         );
     }
 
@@ -56,7 +56,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $event->loadMissing(['participants']);
+        $event->loadMissing(['user', 'participants']);
 
         return new EventResource($event);
     }

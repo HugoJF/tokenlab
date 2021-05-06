@@ -66,7 +66,8 @@ type UserComputedProperties = {
 type EventType = EventProperties & EventComputedProperties & EventRelationships & Timestamps;
 
 type EventRelationships = {
-    users: UserType[],
+    user: UserType;
+    users: UserType[];
 }
 
 type EventProperties = {
