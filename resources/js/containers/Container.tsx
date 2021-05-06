@@ -43,10 +43,8 @@ export const Container: React.FC<Props> = ({className = '', children}) => {
         </header>}
 
         {/* Children */}
-        <div className={clsx('flex-grow container mx-auto', className)}>
-            <main>
-                {children}
-            </main>
-        </div>
+        <main className={clsx('grid grid-cols-1 px-4 container mx-auto', className)}>
+            {children}
+        </main>
     </>
 };
