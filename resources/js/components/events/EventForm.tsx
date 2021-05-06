@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {DateTimePicker} from "@material-ui/pickers";
 import {formatISO, parseISO} from "date-fns";
 import {useForm} from "react-hook-form";
-import {Button} from "./ui/Button";
-import {Input} from "./form/Input";
-import {Field} from "./form/Field";
+import {Button} from "../ui/Button";
+import {Input} from "../form/Input";
+import {Field} from "../form/Field";
 
 export type OpeningFormProps = {
     event?: EventType;

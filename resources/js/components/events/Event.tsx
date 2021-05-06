@@ -1,7 +1,9 @@
 import React from "react";
-import {ChevronRight} from "react-feather";
+import {ChevronRight, Clock} from "react-feather";
 import {format, parseISO} from "date-fns";
 import {Link} from "react-router-dom";
+import {Badge} from "../ui/Badge";
+import {Head} from "../ui/Head";
 
 type Props = {
     event: EventType;
@@ -32,15 +34,27 @@ export const Event: React.FC<Props> = ({event, to}) => {
         </div>
 
         {/* Right panel */}
-        <div className="px-4">
+        <div className="px-4 flex-grow">
             <h2 className="text-lg font-medium">
                 {title}
             </h2>
 
             {/* Start and end dates */}
-            <span className="px-1 text-sm text-blue-500 bg-blue-100 border border-blue-500 rounded">
-                {format(startsAt, 'E d, Y, HH:mm')} – {format(endsAt, 'E d, Y, HH:mm')}
-            </span>
+            <div className="flex flex-col items-start md:flex-row md:space-x-1 space-y-1 md:space-y-0">
+                <Badge icon={Clock}>
+                    {format(startsAt, 'E d, Y, HH:mm')}
+                </Badge>
+                <Badge icon={Clock}>
+                    {format(endsAt, 'E d, Y, HH:mm')}
+                </Badge>
+            </div>
+
+            {/* Users */}
+            <div className="flex mt-2 space-x-1">
+                {event.users.map(user => (
+                    <Head name={user.name}/>
+                ))}
+            </div>
 
             {/* Description */}
             <p className="mt-3 text-gray-700 leading-5">

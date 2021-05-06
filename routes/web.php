@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 /*
  * TODO LIST
  * 1. ~~ Login
- * 2. Register
- * 3. Create event
+ * 2. ~~ Register
+ * 3. ~~ Create event
+ * 3.1. Event view
  * 4. Edit event
  * 5. Delete event
  * 6. Overlap checker

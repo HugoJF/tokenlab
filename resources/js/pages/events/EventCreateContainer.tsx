@@ -4,9 +4,9 @@ import {Container} from "../../containers/Container";
 import {useEvents} from "../../queries/useEvents";
 import {Button} from "../../components/ui/Button";
 import {Title} from "../../components/ui/Title";
-import {Event} from "../../components/Event";
+import {Event} from "../../components/events/Event";
 import {Loading} from "../Loader";
-import {EventForm} from "../../components/EventForm";
+import {EventForm} from "../../components/events/EventForm";
 import {useCreateEvent} from "../../mutations/useCreateEvent";
 
 export const EventCreateContainer: React.FC<object> = () => {

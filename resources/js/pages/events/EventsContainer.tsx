@@ -4,8 +4,8 @@ import {Container} from "../../containers/Container";
 import {useEvents} from "../../queries/useEvents";
 import {Button} from "../../components/ui/Button";
 import {Title} from "../../components/ui/Title";
-import {Event} from "../../components/Event";
 import {Loading} from "../Loader";
+import {EventsList} from "../../components/events/EventsList";
 
 export const EventsContainer: React.FC<object> = () => {
     const {bindGo} = useNavigation();
@@ -18,20 +18,7 @@ export const EventsContainer: React.FC<object> = () => {
     return <Container>
         <Title>Eventos</Title>
 
-        {/* Empty screen */}
-        {events.data.data.data.length === 0 && <div className="mt-4 flex flex-col items-center space-y-4">
-            <Title type="subheader">
-                Nenhum evento foi registrado ainda!
-            </Title>
-        </div>}
-
-        {/* Events */}
-        <div className="mt-4 grid grid-cols-2 gap-4">
-            {events.data.data.data.map(event => <Event
-                key={event.id}
-                event={event}
-            />)}
-        </div>
+        <EventsList events={events.data.data.data}/>
 
         {/* Create event button */}
         <Button className="mt-4" onClick={bindGo('/events/create')}>

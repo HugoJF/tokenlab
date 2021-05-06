@@ -22,9 +22,12 @@ class EventController extends Controller
      */
     public function index()
     {
+        /** @var User $user */
         $user = auth()->user();
 
-        return EventResource::collection($user->events);
+        return EventResource::collection(
+            $user->events()->with(['participants'])->get()
+        );
     }
 
     /**
@@ -53,6 +56,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $event->loadMissing(['participants']);
+
         return new EventResource($event);
     }
 
