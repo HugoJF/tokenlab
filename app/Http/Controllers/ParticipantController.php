@@ -12,6 +12,8 @@ class ParticipantController extends Controller
         $user = auth()->user();
 
         $event->participants()->syncWithoutDetaching([$user->id]);
+
+        return response()->noContent();
     }
 
     public function leave(Event $event)
@@ -19,5 +21,7 @@ class ParticipantController extends Controller
         $user = auth()->user();
 
         $event->participants()->detach([$user->id]);
+
+        return response()->noContent();
     }
 }

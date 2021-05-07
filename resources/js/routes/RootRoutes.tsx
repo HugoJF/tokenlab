@@ -6,7 +6,6 @@ import {Login} from "../pages/auth/Login";
 import {ProtectedRoute} from "./ProtectedRoute";
 import {EventsContainer} from "../pages/events/EventsContainer";
 import {EventEditContainer} from "../pages/events/EventEditContainer";
-import {EventViewContainer} from "../pages/events/EventViewContainer";
 import {EventCreateContainer} from "../pages/events/EventCreateContainer";
 
 export const RootRoutes: React.FC = () => {
@@ -17,7 +16,6 @@ export const RootRoutes: React.FC = () => {
 
             <ProtectedRoute exact path="/events" children={<EventsContainer/>}/>
             <ProtectedRoute path="/events/create" children={<EventCreateContainer/>}/>
-            <ProtectedRoute path="/events/:id" children={<EventViewContainer/>}/>
             <ProtectedRoute path="/events/:id/edit" children={<EventEditContainer/>}/>
 
             <Redirect to="/login"/>

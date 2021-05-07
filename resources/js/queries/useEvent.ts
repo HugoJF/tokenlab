@@ -3,7 +3,7 @@ import {api} from "../api";
 
 export function useEvent(id: Id) {
     return useQuery(
-        'events',
+        ['event', id],
         () => api.events.show(id)
     )
 }

@@ -22,11 +22,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        /** @var User $user */
-        $user = auth()->user();
-
         return EventResource::collection(
-            $user->events()->with(['user', 'participants'])->get()
+            Event::with(['user', 'participants'])->get()
         );
     }
 

@@ -14,10 +14,9 @@ type Props = {
     onDelete?: (event: EventType) => void;
     onJoin?: (event: EventType) => void;
     onLeave?: (event: EventType) => void;
-    to?: string;
 }
 
-export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDelete, onJoin, onLeave, to}) => {
+export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDelete, onJoin, onLeave}) => {
     const {title, description, starts_at, ends_at} = event;
     const auth = useAuthContext();
 
@@ -33,44 +32,23 @@ export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDe
     }
 
     function handleOnEdit(e: React.MouseEvent<HTMLDivElement>) {
-        if (!onEdit) {
-            return;
-        }
-
-        e.preventDefault();
-        onEdit(event);
+        onEdit && onEdit(event);
     }
 
     function handleOnDelete(e: React.MouseEvent<HTMLDivElement>) {
-        if (!onDelete) {
-            return;
-        }
-
-        e.preventDefault();
-        onDelete(event);
+        onDelete && onDelete(event);
     }
 
     function handleOnJoin(e: React.MouseEvent<HTMLDivElement>) {
-        if (!onJoin) {
-            return;
-        }
-
-        e.preventDefault();
-        onJoin(event);
+        onJoin && onJoin(event);
     }
 
     function handleOnLeave(e: React.MouseEvent<HTMLDivElement>) {
-        if (!onLeave) {
-            return;
-        }
-
-        e.preventDefault();
-        onLeave(event);
+        onLeave && onLeave(event);
     }
 
-    return <Link
-        to={to ?? '#'}
-        className="group duration-200 flex px-5 py-5 bg-white border border-gray-200 hover:border-blue-300 rounded-lg cursor-pointer hover:shadow-md"
+    return <div
+        className="group duration-200 flex px-5 py-5 bg-white border border-gray-200 hover:border-blue-300 rounded-lg hover:shadow-md"
     >
         {/* Left panel */}
         <div className="flex flex-col pr-4 justify-center items-center border-r">
@@ -93,10 +71,10 @@ export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDe
                 </h2>
 
                 {controls && <div className="duration-150 group-hover:opacity-100 opacity-0 flex text-gray-400">
-                    <div onClick={handleOnEdit} className="p-2 duration-200 hover:text-gray-500">
+                    <div onClick={handleOnEdit} className="p-2 duration-200 hover:text-gray-500 cursor-pointer">
                         <Edit size={20}/>
                     </div>
-                    <div onClick={handleOnDelete} className="p-2 duration-200 hover:text-gray-500">
+                    <div onClick={handleOnDelete} className="p-2 duration-200 hover:text-gray-500 cursor-pointer">
                         <Trash size={20}/>
                     </div>
                 </div>}
@@ -149,5 +127,5 @@ export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDe
                 </Button>
             </div>}
         </div>
-    </Link>
+    </div>
 };

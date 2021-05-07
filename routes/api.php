@@ -25,7 +25,13 @@ Route::get('/me', function (Request $request) {
 Route::middleware(['auth'])->prefix('events')->group(function () {
     Route::get('/', [\App\Http\Controllers\EventController::class, 'index'])->name('events.index');
     Route::get('{event}', [\App\Http\Controllers\EventController::class, 'show'])->name('events.show');
+
     Route::post('/', [\App\Http\Controllers\EventController::class, 'store'])->name('events.store');
+    Route::post('{event}/join', [\App\Http\Controllers\ParticipantController::class, 'join'])->name('events.join');
+    Route::post('{event}', [\App\Http\Controllers\ParticipantController::class, 'join'])->name('events.join');
+
     Route::patch('{event}', [\App\Http\Controllers\EventController::class, 'update'])->name('events.update');
+
     Route::delete('{event}', [\App\Http\Controllers\EventController::class, 'destroy'])->name('events.destroy');
+    Route::delete('{event}/leave', [\App\Http\Controllers\ParticipantController::class, 'leave'])->name('events.leave');
 });

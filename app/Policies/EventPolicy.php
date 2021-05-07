@@ -20,6 +20,11 @@ class EventPolicy
         return $event->user->is($user);
     }
 
+    public function update(User $user, Event $event)
+    {
+        return $event->user->is($user);
+    }
+
     public function create(User $user)
     {
         return true;

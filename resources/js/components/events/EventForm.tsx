@@ -40,7 +40,7 @@ export const EventForm: React.FC<OpeningFormProps> = ({event, onSubmit, action})
 
         for (let prop of Object.keys(event)) {
             // @ts-ignore
-            setValue(prop, opening[prop]);
+            setValue(prop, event[prop]);
         }
 
         // Manually updates dates that are not handled by react-hook-form
