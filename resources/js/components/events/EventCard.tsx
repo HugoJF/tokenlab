@@ -51,7 +51,7 @@ export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDe
         className="group duration-200 flex px-5 py-5 bg-white border border-gray-200 hover:border-blue-300 rounded-lg hover:shadow-md"
     >
         {/* Left panel */}
-        <div className="flex flex-col pr-4 justify-center items-center border-r">
+        <div className="flex flex-col pr-4 md:justify-center items-center border-r">
             {/* Day of week */}
             <div className="text-gray-500 tracking-tight">
                 {format(startsAt, 'E')}
@@ -81,7 +81,7 @@ export const EventCard: React.FC<Props> = ({event, controls = true, onEdit, onDe
             </div>
 
             {/* Meta */}
-            <div className="flex flex-col items-start md:flex-row md:space-x-1 space-y-1 md:space-y-0">
+            <div className="flex flex-col flex-wrap items-start md:flex-row">
                 <Badge title="Criado por" icon={User}>
                     {event.user.name}
                 </Badge>

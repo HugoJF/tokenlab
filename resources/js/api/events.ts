@@ -1,9 +1,10 @@
 import {bxios} from "../bxios";
 
 export const events = {
-    index: () => bxios()
+    index: (page: number) => bxios()
         .get('events')
-        .send<ResourceResponse<EventType[]>>(),
+        .setCustom({params: {page}})
+        .send<PaginatedResourceResponse<EventType[]>>(),
     show: (id: Id) => bxios()
         .get('events', id)
         .send<ResourceResponse<EventType>>(),

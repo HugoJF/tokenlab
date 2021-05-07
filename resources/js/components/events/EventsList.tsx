@@ -41,7 +41,7 @@ export const EventsList: React.FC<Props> = ({events}) => {
         </div>}
 
         {/* Events */}
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {events.map(event => <EventCard
                 key={event.id}
                 event={event}

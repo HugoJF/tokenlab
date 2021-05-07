@@ -8,6 +8,7 @@ import useNavigation from "../../hooks/useNavigation";
 import {Title} from "../../components/ui/Title";
 import {useLogin} from "../../mutations/useLogin";
 import {useAuthContext} from "../../hooks/useAuthContext";
+import {useMyForm} from "../../hooks/useForm";
 
 type Credentials = {
     email: string;
@@ -18,7 +19,7 @@ export const Login: React.FC<object> = () => {
     const {go} = useNavigation();
     const authed = useAuthContext();
     const [loading, setLoading] = useState(false);
-    const {register, handleSubmit, formState: {errors}} = useForm<Credentials>();
+    const {setAutoErrors, register, handleSubmit, formState: {errors}} = useMyForm<Credentials>();
     const login = useLogin();
 
     useEffect(() => {
@@ -36,8 +37,7 @@ export const Login: React.FC<object> = () => {
             });
             go('/events');
         } catch (e) {
-            alert('oof');
-            // TODO
+            setAutoErrors(e.response.data.errors);
         }
         setLoading(false);
     }

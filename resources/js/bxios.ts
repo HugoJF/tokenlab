@@ -65,7 +65,7 @@ export class Bxios {
         return this;
     }
 
-    setOutsideApi() {
+    noApiPrefix() {
         this.outsideApi = true;
 
         return this;

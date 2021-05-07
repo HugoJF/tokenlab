@@ -5,10 +5,6 @@ type Timestamps = {
     created_at: string;
 }
 
-type SoftDeletes = {
-    deleted_at: string;
-}
-
 type Errors<T> = {
     [key in keyof T]: string[];
 }
@@ -45,6 +41,13 @@ type LoginParameters = {
     email: string;
     password: string;
     remember: boolean;
+}
+
+type RegisterParameters = {
+    name: string;
+    email: string;
+    password: string;
+    password_confirmation: string;
 }
 
 

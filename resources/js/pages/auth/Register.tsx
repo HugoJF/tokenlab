@@ -1,39 +1,33 @@
 import {Title} from "../../components/ui/Title";
 import React, {useState} from "react";
-import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {Input} from "../../components/form/Input";
 import {Button} from "../../components/ui/Button";
 import useNavigation from "../../hooks/useNavigation";
 import {Container} from "../../containers/Container";
-
-export {}
-
-type RegisterCredentials = {
-    name: string;
-    email: string;
-    password: string;
-    password_confirmation: string;
-}
+import {useRegister} from "../../mutations/useRegister";
+import {useLogin} from "../../mutations/useLogin";
+import {useMyForm} from "../../hooks/useForm";
 
 export const Register: React.FC<object> = () => {
     const {go} = useNavigation();
+    const userRegister = useRegister();
+    const login = useLogin();
     const [loading, setLoading] = useState(false);
-    const {register, handleSubmit, watch, formState: {errors}, setError} = useForm<RegisterCredentials>();
+    const {setAutoErrors, register, handleSubmit, watch, formState: {errors}} = useMyForm<RegisterParameters>();
 
-    function setErrors(errors: object) {
-        for (let [key, messages] of Object.entries(errors)) {
-            // @ts-ignore
-            setError(key, {type: 'manual', message: messages[0]});
-        }
-    }
-
-    async function registerUser(credentials: RegisterCredentials) {
+    async function registerUser(credentials: RegisterParameters) {
         setLoading(true);
         try {
-            go('/on-boarding');
+            await userRegister.mutateAsync(credentials);
+            await login.mutateAsync({
+                email: credentials.email,
+                password: credentials.password,
+                remember: true
+            });
+            go('/events');
         } catch (e) {
-            setErrors(e.response.data.errors);
+            setAutoErrors(e.response.data.errors);
         }
         setLoading(false);
     }
